@@ -17,7 +17,12 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/dmvbnoob/spring-petclinic.git'
+                script {
+                    checkout([$class: 'GitSCM', 
+                        branches: [[name: '*/main']], 
+                        userRemoteConfigs: [[url: 'https://github.com/dmvbnoob/spring-petclinic.git']]
+                    ])
+                }
             }
         }
 
