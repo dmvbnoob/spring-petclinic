@@ -7,6 +7,7 @@ pipeline {
     }
 
     environment {
+        PATH = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
         JACOCO_REPORT_PATH = '**/target/site/jacoco/index.html'
     }
 
@@ -24,13 +25,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh '/bin/bash -c "mvn package -DskipTests"'
+                sh 'mvn package -DskipTests'
             }
         }
 
         stage('Run Tests with Code Coverage') {
             steps {
-                sh '/bin/bash -c "mvn test jacoco:report"'
+                sh 'mvn test jacoco:report'
             }
         }
 
