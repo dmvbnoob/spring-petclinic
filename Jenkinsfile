@@ -7,8 +7,6 @@ pipeline {
     }
 
     environment {
-        PATH = "/usr/local/bin:/usr/local/bin:/Users/donnabrar/Library/Java/JavaVirtualMachines/corretto-17.0.9/Contents/Home/bin:/opt/homebrew/Cellar/maven/3.9.9/libexec/bin:$PATH"
-        SHELL = "/bin/sh"
         JACOCO_REPORT_PATH = '**/target/site/jacoco/index.html'
     }
 
@@ -26,13 +24,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                sh '/bin/bash -c "mvn package -DskipTests"'
             }
         }
 
         stage('Run Tests with Code Coverage') {
             steps {
-                sh 'mvn test jacoco:report'
+                sh '/bin/bash -c "mvn test jacoco:report"'
             }
         }
 
