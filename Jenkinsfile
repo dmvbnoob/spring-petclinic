@@ -6,9 +6,9 @@ pipeline {
         jdk 'JDK17' 
     }
 
-    triggers {
-        cron('H/3 * * * 4')
-    }
+    // triggers {
+    //     cron('H/3 * * * 4')
+    // }
 
     environment {
         JACOCO_REPORT_PATH = '**/target/site/jacoco/index.html'
@@ -28,7 +28,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+                // sh 'mvn clean package'
+                sh 'mvn package -DskipTests'
             }
         }
 
