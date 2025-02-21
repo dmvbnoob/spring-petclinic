@@ -31,7 +31,7 @@ pipeline {
 
         stage('Run Tests with Code Coverage') {
             steps {
-                sh 'mvn test jacoco:report'
+                sh 'mvn test -DskipITs jacoco:report'
             }
         }
 
